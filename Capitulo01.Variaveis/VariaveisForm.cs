@@ -43,13 +43,6 @@ namespace Capitulo01.Variaveis
             resultadoListBox.Items.Add("5 / 2 = " + (5 / 2));
             resultadoListBox.Items.Add("d % a = " + (d % a));
 
-
-
-
-
-
-
-
             /*
                         decimal valor = 10;
                         string nomeCliente = "Marcus";
@@ -67,15 +60,11 @@ namespace Capitulo01.Variaveis
 
         private void reduzidasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             var x = 5;
             resultadoListBox.Items.Add(" _x  = " + x);
-
             //x = x-3;
             x -= 3;
-            resultadoListBox.Items.Add(" _x  = " + x);
-            
-
+            resultadoListBox.Items.Add(" _x  = " + x);         
         }
 
         private void incrementaisDecrementaisToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,8 +94,6 @@ namespace Capitulo01.Variaveis
             resultadoListBox.Items.Add("_x == z = " + (_x == _z));
             resultadoListBox.Items.Add("_x != z = " + (_x != _z));
 
-
-
         }
 
         private void MostrarVariaveis()
@@ -115,9 +102,6 @@ namespace Capitulo01.Variaveis
             resultadoListBox.Items.Add("_w = " + _w);
             resultadoListBox.Items.Add("y = " + _y);
             resultadoListBox.Items.Add("z = " + _z);
-
-
-
 
         }
 
