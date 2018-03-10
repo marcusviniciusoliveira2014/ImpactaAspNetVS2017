@@ -2,7 +2,6 @@
 {
     public enum Combustivel
     {
-
         Gasolina = 1,
         Alcool = 2,
         Flex = 3,
