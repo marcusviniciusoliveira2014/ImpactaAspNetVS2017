@@ -1,10 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <veiculos>
   <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>1</Id>
-    <Placa>ABC1234</Placa>
-    <Ano>2014</Ano>
-    <Observacao>Observar</Observacao>
+    <Id>e114d970-37d9-481b-b4a0-3795e5d69d3f</Id>
+    <Placa>ABV1244</Placa>
+    <Ano>2017</Ano>
+    <Observacao>outro TEste</Observacao>
+    <Cor>
+      <Id>3</Id>
+      <Nome>Azul</Nome>
+    </Cor>
+    <Modelo>
+      <Id>1</Id>
+      <Nome>Palio</Nome>
+      <Marca>
+        <Id>1</Id>
+        <Nome>Fiat</Nome>
+      </Marca>
+    </Modelo>
+    <Combustivel>Alcool</Combustivel>
+    <Cambio>Manual</Cambio>
+  </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>16f8bc32-fcdc-4147-84a9-f4d7a9581cb5</Id>
+    <Placa>ABC1767</Placa>
+    <Ano>2017</Ano>
+    <Observacao>teste</Observacao>
     <Cor>
       <Id>1</Id>
       <Nome>Preto</Nome>
@@ -17,11 +37,7 @@
         <Nome>Fiat</Nome>
       </Marca>
     </Modelo>
-    <Marca>
-      <Id>1</Id>
-      <Nome>Fiat</Nome>
-    </Marca>
-    <Combustivel>Flex</Combustivel>
-    <Cambio>Manual</Cambio>
+    <Combustivel>Alcool</Combustivel>
+    <Cambio>Automatico</Cambio>
   </Veiculo>
 </veiculos>

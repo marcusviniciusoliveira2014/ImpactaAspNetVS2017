@@ -31,7 +31,7 @@ namespace Captitulo01.Troco
             //v_troco = v_troco % 1;           
             v_troco %= 1;
 
-
+            
             var moedas050 = (int)(v_troco / 0.50m);
             v_troco %= 0.5m;
 

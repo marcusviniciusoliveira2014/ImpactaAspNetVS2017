@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capitulo06.Http.Testes", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oficina.AspNet", "Oficina.AspNet\Oficina.AspNet.csproj", "{68969875-9837-4715-96E2-DF13487D4CA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caputulo04.Colecoes.Testes", "Caputulo04.Colecoes.Testes\Caputulo04.Colecoes.Testes.csproj", "{CFA33B52-2E48-469F-880A-2A98CB443544}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{68969875-9837-4715-96E2-DF13487D4CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68969875-9837-4715-96E2-DF13487D4CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68969875-9837-4715-96E2-DF13487D4CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA33B52-2E48-469F-880A-2A98CB443544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA33B52-2E48-469F-880A-2A98CB443544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA33B52-2E48-469F-880A-2A98CB443544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA33B52-2E48-469F-880A-2A98CB443544}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
