@@ -78,7 +78,32 @@ namespace Caputulo04.Colecoes.Testes
             return (resp / values.Length);
         }
 
+        [TestMethod]
+        public void StringSaoVetoresTeste()
+        {
+            var nome = "Vitor";
 
+            foreach (var caractere in nome)
+            {
+                Console.WriteLine(caractere);
+            }
+
+        }
+
+
+
+
+
+        /*
+        private decimal Media(decimal valor1, decimal valor2)
+        {
+        }
+
+
+     private decimal Media(params deciaml[] valores)
+        {
+        }
+        */
 
     }
 }

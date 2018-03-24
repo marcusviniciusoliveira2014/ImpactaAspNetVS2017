@@ -40,4 +40,67 @@
     <Combustivel>Alcool</Combustivel>
     <Cambio>Automatico</Cambio>
   </Veiculo>
+  <VeiculoPasseio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>eba8fca1-fe10-4951-b734-793166545e34</Id>
+    <Placa>ABC8967</Placa>
+    <Ano>2015</Ano>
+    <Observacao>Teste de Inclusão de Cadastro</Observacao>
+    <Cor>
+      <Id>2</Id>
+      <Nome>Amarelo</Nome>
+    </Cor>
+    <Modelo>
+      <Id>1</Id>
+      <Nome>Palio</Nome>
+      <Marca>
+        <Id>1</Id>
+        <Nome>Fiat</Nome>
+      </Marca>
+    </Modelo>
+    <Combustivel>Alcool</Combustivel>
+    <Cambio>Manual</Cambio>
+    <Carroceria>Hatch</Carroceria>
+  </VeiculoPasseio>
+  <VeiculoPasseio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>c8cd06fe-8e1d-40f0-8381-00a6c92db294</Id>
+    <Placa>RED7865</Placa>
+    <Ano>2018</Ano>
+    <Observacao>teste</Observacao>
+    <Cor>
+      <Id>3</Id>
+      <Nome>Azul</Nome>
+    </Cor>
+    <Modelo>
+      <Id>2</Id>
+      <Nome>Mobi</Nome>
+      <Marca>
+        <Id>1</Id>
+        <Nome>Fiat</Nome>
+      </Marca>
+    </Modelo>
+    <Combustivel>Alcool</Combustivel>
+    <Cambio>Automatico</Cambio>
+    <Carroceria>Hatch</Carroceria>
+  </VeiculoPasseio>
+  <VeiculoPasseio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>c3a2f66e-46a3-4bbe-bc17-242d216026f1</Id>
+    <Placa>ABC4567</Placa>
+    <Ano>2009</Ano>
+    <Observacao>cadastrado</Observacao>
+    <Cor>
+      <Id>6</Id>
+      <Nome>Cinza</Nome>
+    </Cor>
+    <Modelo>
+      <Id>2</Id>
+      <Nome>Mobi</Nome>
+      <Marca>
+        <Id>1</Id>
+        <Nome>Fiat</Nome>
+      </Marca>
+    </Modelo>
+    <Combustivel>Gasolina</Combustivel>
+    <Cambio>Manual</Cambio>
+    <Carroceria>Hatch</Carroceria>
+  </VeiculoPasseio>
 </veiculos>

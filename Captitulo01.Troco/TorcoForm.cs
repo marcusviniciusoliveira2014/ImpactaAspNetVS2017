@@ -23,38 +23,49 @@ namespace Captitulo01.Troco
             decimal v_valorpago     = Convert.ToDecimal(valorPagoTextBox.Text);
             decimal v_troco =   v_valorpago - v_valorcompra ;
 
+            var moedas = new decimal[] { 1.00m, 0.50m, 0.25m, 0.10m, 0.05m, 0.01m };
+
             trocoTextBox.Text = v_troco.ToString("c");
 
-            //ToDo: Refatorar para utilizar estrutura de Repeticao;
+            for (int i = 0; i <= 5; i++)
+            {
+                var quantidadesMoedas = (int)(v_troco / moedas[i]);
+                v_troco %= moedas[i];
+                moedasListView.Items[i].Text = quantidadesMoedas.ToString();
+            }
 
-            var moedas1 = (int)v_troco;
-            //v_troco = v_troco % 1;           
-            v_troco %= 1;
+           
+
+            ////ToDo: Refatorar para utilizar estrutura de Repeticao;
+
+            //var moedas1 = (int)v_troco;
+            ////v_troco = v_troco % 1;           
+            //v_troco %= 1;
 
             
-            var moedas050 = (int)(v_troco / 0.50m);
-            v_troco %= 0.5m;
+            //var moedas050 = (int)(v_troco / 0.50m);
+            //v_troco %= 0.5m;
 
-            var moedas025 = (int)(v_troco / 0.25m);
-            v_troco %= 0.25m;
+            //var moedas025 = (int)(v_troco / 0.25m);
+            //v_troco %= 0.25m;
 
-            var moedas010 = (int)(v_troco / 0.10m);
-            v_troco %= 0.10m;
+            //var moedas010 = (int)(v_troco / 0.10m);
+            //v_troco %= 0.10m;
 
-            var moedas005 = (int)(v_troco / 0.05m);
-            v_troco %= 0.05m;
+            //var moedas005 = (int)(v_troco / 0.05m);
+            //v_troco %= 0.05m;
 
-            var moedas001 = (int)(v_troco / 0.01m);
-            v_troco %= 0.01m;
+            //var moedas001 = (int)(v_troco / 0.01m);
+            //v_troco %= 0.01m;
 
-            //var moedas001 = (int)v_troco;
+            ////var moedas001 = (int)v_troco;
 
-            moedasListView.Items[0].Text = moedas1.ToString();
-            moedasListView.Items[1].Text = moedas050.ToString();
-            moedasListView.Items[2].Text = moedas025.ToString();
-            moedasListView.Items[3].Text = moedas010.ToString();
-            moedasListView.Items[4].Text = moedas005.ToString();
-            moedasListView.Items[5].Text = moedas001.ToString();
+            //moedasListView.Items[0].Text = moedas1.ToString();
+            //moedasListView.Items[1].Text = moedas050.ToString();
+            //moedasListView.Items[2].Text = moedas025.ToString();
+            //moedasListView.Items[3].Text = moedas010.ToString();
+            //moedasListView.Items[4].Text = moedas005.ToString();
+            //moedasListView.Items[5].Text = moedas001.ToString();
 
 
 

@@ -30,17 +30,34 @@
             input[type=submit] {
                 width: 300px;
             }
+
+        #mensagemErro {
+            height: 40px;
+            background-color: #c71010;          
+            margin-bottom: 10px;
+            text-align:center;
+            color:white;
+            vertical-align: middle;
+            line-height: 40px;
+        }
     </style>
 </head>
-<body>
+<body onload="exibirMensagem();">
 
     <h1>Cadastro de Veículos</h1>
     <hr />
     @{
         if (IsPost)
         {
-            _veiculoAplicacao.inserir();
-            Response.Redirect("Veiculo");
+            try
+            {
+                _veiculoAplicacao.inserir();
+                Response.Redirect("Veiculo?mensagem=Veículo cadastrado com sucesso.");
+            }
+            catch
+            {
+                <div id="mensagemErro">@HttpContext.Current.Items["MensagemErro"]</div>
+            }
         }
     }
     <form method="post">
@@ -59,7 +76,7 @@
             <option value="">Selecione</option>
             @{foreach (var modelo in _veiculoAplicacao.Modelos)
                 {
-                    <option value="@modelo.Id">@modelo.Nome</option>
+                    <option value="@modelo.Id"  selected ="@Convert.ToBoolean(modelo.Nome == Request.Form["modelo"]) ">@modelo.Nome</option>
                 }
             }
         </select>
@@ -76,10 +93,10 @@
         </select>
         <br />
         <label for="placa">Placa:</label>
-        <input typeof="text" name="placa" value="" />
+        <input typeof="text" name="placa" value="@Request.Form["placa"]" />
         <br />
         <label for="ano">Ano:</label>
-        <input typeof="text" name="ano" value="" />
+        <input typeof="text" name="ano" value="@Request.Form["ano"]" />
         <br />
 
         <label for="combustivel">Combustivel:</label>
@@ -87,7 +104,7 @@
             <option value="">Selecione</option>
             @{foreach (var combustivel in _veiculoAplicacao.Combustiveis)
                 {
-                    <option value="@Convert.ToInt32(combustivel)">@combustivel</option>
+                    <option selected="@Convert.ToBoolean(Convert.ToInt32(combustivel).ToString() == Request.Form["combustivel"])" value="@Convert.ToInt32(combustivel)">@combustivel</option>
                 }
             }
         </select>
@@ -105,7 +122,7 @@
         <br />
         <label for="observacao">Observação:</label>
         <br />
-        <textarea name="observacao" cols="40" rows="10"></textarea>
+        <textarea value="@Request.Form["observacao"]" name="observacao" cols="40" rows="10" ></textarea>
 
 
         <br />
@@ -116,6 +133,16 @@
     <script type="text/javascript">
         function obterModelos(marcaId) {
             document.location.href = "Veiculo?marcaId=" + marcaId;
+        }
+
+        function exibirMensagem() {
+            var params = (new URL(document.location)).searchParams;
+            var mensagem = params.get("mensagem");
+
+            if (mensagem) {
+                alert(mensagem);
+                document.location.href = "Veiculo";
+            }
         }
     </script>
 
