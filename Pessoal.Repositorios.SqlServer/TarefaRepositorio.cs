@@ -10,7 +10,7 @@ namespace Pessoal.Repositorios.SqlServer
     public class TarefaRepositorio
     {
         private string _stringConexao = ConfigurationManager.ConnectionStrings["PessoalConnectionString"].ConnectionString;
-            
+
         public int Inserir(Tarefa tarefa)
         {
 
@@ -27,9 +27,8 @@ namespace Pessoal.Repositorios.SqlServer
                     return (int)comando.ExecuteScalar();
                 }
 
-            }           
+            }
         }
-
 
         public void Atualizar(Tarefa tarefa)
         {
@@ -50,7 +49,58 @@ namespace Pessoal.Repositorios.SqlServer
             }
         }
 
-        public List<Tarefa> SelecionarTodos()
+        public Tarefa Selecionar(int Id) {
+
+            Tarefa tarefa = null;
+
+            using (var conexao = new SqlConnection(_stringConexao))
+            {
+                conexao.Open();
+                const string nomeProcedure = "TarefaSelecionar";
+
+                using (var comando = new SqlCommand(nomeProcedure, conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("Id", Id);
+
+                    using (var registro = comando.ExecuteReader())
+                    {
+
+                        if (registro.Read())
+                        {
+                            tarefa = Mapear(registro);
+
+                        }
+                    }
+
+                }
+
+            }
+
+
+            return tarefa;
+        }
+
+        public void Excluir(int Id) {
+
+            using (var conexao = new SqlConnection(_stringConexao))
+            {
+                conexao.Open();
+                const string nomeProcedure = "TarefaExcluir";
+
+                using (var comando = new SqlCommand(nomeProcedure, conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("Id", Id);
+                    comando.ExecuteNonQuery();
+                }
+
+            }
+
+        }
+
+
+        public List<Tarefa> Selecionar()
         {
 
             var tarefas = new List<Tarefa>();
@@ -68,11 +118,9 @@ namespace Pessoal.Repositorios.SqlServer
 
                         while (registro.Read())
                         {
-                            tarefas.Add(Mapear(registro))
+                            tarefas.Add(Mapear(registro));
 
                         }
-
-
                     }
 
                 }
@@ -84,10 +132,13 @@ namespace Pessoal.Repositorios.SqlServer
 
         private Tarefa Mapear(SqlDataReader registro)
         {
-            
-            Paramos aqui
-
-
+            var tarefa = new Tarefa();
+            tarefa.Id = Convert.ToInt32(registro["Id"]);
+            tarefa.Nome = registro["Nome"].ToString();
+            tarefa.Prioridade = (Prioridade)registro["Prioridade"];
+            tarefa.Concluida = Convert.ToBoolean(registro["Concluida"]);
+            tarefa.Observacao = Convert.ToString(registro["observacao"]);
+            return tarefa;
         }
 
         private SqlParameter[] Mapear(Tarefa tarefa)
@@ -108,8 +159,7 @@ namespace Pessoal.Repositorios.SqlServer
         }
 
 
-        /*
-         
+        /*   
          
 create table tarefa(
          Id integer not null primary key identity,
@@ -118,10 +168,6 @@ create table tarefa(
          Concluida bit, 
          Observacao nvarchar(1000) 
 );
-
-
-
-
 
 create procedure tarefaInserir  
    @nome nvarchar(200), 

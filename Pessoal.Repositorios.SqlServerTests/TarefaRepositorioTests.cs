@@ -45,16 +45,31 @@ namespace Pessoal.Repositorios.SqlServer.Tests
 
 
         [TestMethod]
-        public void SelecionarTest()
+        public void SelecionarTest() { }
+
+        [TestMethod()]
+        public void SelecionarTest1()
         {
+            var tarefas = _tarefarepositorio.Selecionar();
+            Assert.IsTrue(tarefas.Count != 0);
+        }
 
-
-
-
+        [TestMethod()]
+        public void SelecionarComId()
+        {
+            var tarefa = _tarefarepositorio.Selecionar(2);
+            Console.WriteLine(tarefa.Id);
 
         }
 
+        [TestMethod()]
+        public void ExcluirTest()
+        {
+            _tarefarepositorio.Excluir(4);
 
+            var tarefa = _tarefarepositorio.Selecionar(4);
+            Assert.IsNull(tarefa);
 
+        }
     }
 }
