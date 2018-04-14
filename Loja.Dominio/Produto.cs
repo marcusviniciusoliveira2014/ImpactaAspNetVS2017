@@ -8,7 +8,7 @@ namespace Loja.Dominio
         public string  Nome { get; set; }
         public Decimal preco { get; set; }
         public int Estoque { get; set; }
-        public bool Descontinuado { get; set; }
+        public bool Ativo { get; set; }
         public virtual Categoria Categoria { get; set; } ///virtual liga o LadyLozer para trazer a categoria junto com o Produto
     }
 }

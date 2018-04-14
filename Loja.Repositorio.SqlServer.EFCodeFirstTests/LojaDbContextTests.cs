@@ -26,18 +26,10 @@ namespace Loja.Repositorio.SqlServer.EFCodeFirst.Tests
         }
 
         [TestMethod()]
-        public void LojaDbContextTest()
+        public void SelecionarTodasCategoriasTeste()
         {
-            var categoria = new Categoria();
-            categoria.Nome = "Papelaria";
-
-            _db.Categorias.Add(categoria);
-
-            _db.SaveChanges();
-
+            var categorias = _db.Categorias.ToList();
         }
-
-
 
         [TestMethod]
         public void InserirProdutoTeste()
@@ -47,15 +39,11 @@ namespace Loja.Repositorio.SqlServer.EFCodeFirst.Tests
             produto.preco = 20.00m;
             produto.Estoque = 50;
 
-
-            produto.Categoria = new Categoria { Nome = "Prfumaria" };
-
-           // produto.Categoria =    _db.Categorias.Single(c => c.Id == 1);
-
+           // produto.Categoria = new Categoria { Nome = "Prfumaria" };
+            produto.Categoria =    _db.Categorias.Single(c => c.Id == 1);
 
             _db.Produtos.Add(produto);
             _db.SaveChanges();
-
 
         }
 
