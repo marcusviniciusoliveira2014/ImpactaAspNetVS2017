@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Loja.Dominio;
 using Loja.Mvc.Models;
@@ -77,7 +75,10 @@ namespace Loja.Mvc.Controllers
         // GET: Produtos/Create
         public ActionResult Create()
         {
-            return View(Mapear(new Produto()));
+
+            ViewBag.Titulo = "Novo Produto";
+            // return View(Mapear(new Produto()));
+            return View("~/Views/Produtos/CreateOrEdit.csHTML",Mapear(new Produto()));
         }
 
         // POST: Produtos/Create
@@ -96,7 +97,9 @@ namespace Loja.Mvc.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(ViewModel);
+            //return View(ViewModel);
+            return View("~/Views/Produtos/CreateOrEdit.csHTML",ViewModel);
+
         }
 
         private Produto Mapear(ProdutoViewModel viewModel)
