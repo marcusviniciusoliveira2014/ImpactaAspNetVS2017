@@ -127,7 +127,7 @@ namespace Loja.Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            return View(Mapear(produto));
+            return View("~/Views/Produtos/CreateOrEdit.csHTML",Mapear(produto));
         }
 
         // POST: Produtos/Edit/5
@@ -167,7 +167,7 @@ namespace Loja.Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            return View(Mapear(produto));
+           return View(Mapear(produto));
         }
 
         // POST: Produtos/Delete/5
@@ -179,6 +179,13 @@ namespace Loja.Mvc.Controllers
             db.Produtos.Remove(produto);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [ActionName("Categoria")]
+        public JsonResult ObterProdutoPorCategoria(int? categoriaId) {
+
+            return Json(db.Produtos.Where(p => p.Categoria.Id == categoriaId).ToList(),JsonRequestBehavior.AllowGet);
+
         }
 
         protected override void Dispose(bool disposing)
