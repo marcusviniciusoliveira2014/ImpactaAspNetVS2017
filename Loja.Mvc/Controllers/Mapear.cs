@@ -1,4 +1,5 @@
-﻿using Loja.Mvc.Models;
+﻿using Loja.Mvc.Areas.Admin.Models;
+using Loja.Mvc.Models;
 using Loja.Mvc.Validacoes;
 
 namespace Loja.Mvc.Controllers

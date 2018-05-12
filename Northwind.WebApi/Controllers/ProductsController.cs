@@ -43,19 +43,22 @@ namespace Northwind.WebApi.Controllers
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProducts(int id, Products products)
+        public IHttpActionResult PutProducts(int id, Products viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != products.ProductID)
+            if (id != viewModel.ProductID)
             {
                 return BadRequest();
             }
 
-            db.Entry(products).State = EntityState.Modified;
+            //  db.Entry(products).State = EntityState.Modified;
+
+            var produto = db.Products.Find(id);
+            db.Entry(produto).CurrentValues.SetValues(viewModel);
 
             try
             {
@@ -108,6 +111,7 @@ namespace Northwind.WebApi.Controllers
         }
 
         [Route("{id}/orders")]
+        
         public IHttpActionResult GetProductOrders(int id) {
 
             var product = db.Products

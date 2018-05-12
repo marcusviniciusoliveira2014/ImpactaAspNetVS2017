@@ -1,22 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Loja.Dominio;
-using Loja.Mvc.Models;
+using Loja.Mvc.Areas.Admin.Models;
 using Loja.Repositorio.SqlServer.EFCodeFirst;
 
-namespace Loja.Mvc.Controllers
+namespace Loja.Mvc.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private LojaDbContext db = new LojaDbContext();
 
         // GET: Produtos
+        [AllowAnonymous]
         public ActionResult Index()
-        {
+        {           
             return View(Mapear(db.Produtos.ToList()));
         }
 
@@ -58,6 +61,7 @@ namespace Loja.Mvc.Controllers
         }
 
         // GET: Produtos/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -78,7 +82,7 @@ namespace Loja.Mvc.Controllers
 
             ViewBag.Titulo = "Novo Produto";
             // return View(Mapear(new Produto()));
-            return View("~/Views/Produtos/CreateOrEdit.csHTML",Mapear(new Produto()));
+            return View("~/Areas/Admin/Views/Produtos/CreateOrEdit.csHTML",Mapear(new Produto()));
         }
 
         // POST: Produtos/Create
@@ -98,7 +102,7 @@ namespace Loja.Mvc.Controllers
             }
 
             //return View(ViewModel);
-            return View("~/Views/Produtos/CreateOrEdit.csHTML",ViewModel);
+            return View("~/Areas/Admin/Views/Produtos/CreateOrEdit.csHTML", ViewModel);
 
         }
 
@@ -127,7 +131,7 @@ namespace Loja.Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Produtos/CreateOrEdit.csHTML",Mapear(produto));
+            return View("~/Areas/Admin/Views/Produtos/CreateOrEdit.csHTML", Mapear(produto));
         }
 
         // POST: Produtos/Edit/5
@@ -156,6 +160,7 @@ namespace Loja.Mvc.Controllers
         }
 
         // GET: Produtos/Delete/5
+        [Authorize(Roles = "Admin, Gerente")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -171,6 +176,7 @@ namespace Loja.Mvc.Controllers
         }
 
         // POST: Produtos/Delete/5
+        [Authorize(Roles = "Admin, Gerente")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
